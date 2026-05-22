@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-й этаж | МБОУ СОШ №28 | Электроснабжение</title>
+    <style>
+        :root {
+            --bg: #f8fafc; --card: #ffffff; --primary: #2563eb;
+            --pow: #f59e0b; --lit: #10b981; --emr: #ef4444; --tech: #6b7280;
+            --txt: #0f172a; --sec: #475569; --bdr: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -1px rgba(0,0,0,0.04);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+        body { background: var(--bg); color: var(--txt); padding: 20px; line-height: 1.4; }
+        header { max-width: 1400px; margin: 0 auto 24px; background: var(--card); padding: 20px; border-radius: 12px; box-shadow: var(--shadow); border-left: 5px solid var(--primary); }
+        h1 { font-size: 1.6rem; margin-bottom: 6px; }
+        .meta { color: var(--sec); font-size: 0.85rem; margin-bottom: 10px; }
+        .global-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-top: 12px; }
+        .g-box { background: #f1f5f9; padding: 10px; border-radius: 8px; font-size: 0.8rem; }
+        .g-box strong { display: block; color: var(--primary); margin-bottom: 4px; font-size: 0.75rem; text-transform: uppercase; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px; max-width: 1400px; margin: 0 auto; }
+        .card { background: var(--card); border-radius: 10px; padding: 16px; box-shadow: var(--shadow); border-top: 4px solid var(--bdr); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-2px); }
+        .h { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid var(--bdr); padding-bottom: 8px; }
+        .id { font-size: 1.15rem; font-weight: 700; color: var(--primary); }
+        .area { background: #f1f5f9; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; color: var(--sec); font-weight: 500; }
+        .sec { margin-bottom: 8px; }
+        .st { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--sec); margin-bottom: 4px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+        .icon { width: 14px; height: 14px; flex-shrink: 0; }
+        .icon-pow { color: var(--pow); }
+        .icon-lit { color: var(--lit); }
+        .icon-emr { color: var(--emr); }
+        .icon-cable { color: var(--tech); }
+        .r { display: flex; justify-content: space-between; font-size: 0.82rem; margin: 3px 0; align-items: center; }
+        .lb { color: var(--sec); min-width: 45%; display: flex; align-items: center; gap: 5px; }
+        .vl { font-weight: 500; text-align: right; word-break: break-word; }
+        .mini-icon { width: 11px; height: 11px; opacity: 0.7; }
+        .eq { background: #f8fafc; padding: 6px; border-radius: 6px; margin-top: 6px; font-size: 0.78rem; border-left: 3px solid var(--tech); }
+        .note { font-size: 0.75rem; background: #fefce8; padding: 6px; border-radius: 6px; margin-top: 8px; border-left: 3px solid var(--pow); color: #854d0e; }
+        footer { max-width: 1400px; margin: 24px auto 0; text-align: center; font-size: 0.75rem; color: var(--sec); border-top: 1px solid var(--bdr); padding-top: 12px; }
+        @media(max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>⚡ Электроснабжение: 3-й этаж (по помещениям)</h1>
+    <p class="meta">Проект: 04-2023-ЭОМ | Объект: МБОУ г. Иркутска СОШ № 28 | Питание от ВРУ1 (подвал) через РП1/РП2/РП4</p>
+    <div class="global-info">
+        <div class="g-box"><strong>ЩР3 (Розетки)</strong>Ввод: ВВГнг(А)-LSLTx 5×10 (43м)<br>Защита групп: АД32 С16, 30мА, 1Р+N<br>Кабель групп: ВВГнг(А)-LSLTx 3×2,5</div>
+        <div class="g-box"><strong>ЩО3 (Освещение)</strong>Ввод: ВВГнг(А)-LSLTx 5×6 (45м)<br>Защита групп: ВА47-63 С10, 1Р<br>Кабель групп: ВВГнг(А)-LSLTx 3×1,5</div>
+        <div class="g-box"><strong>ЩАО3 (Аварийное)</strong>Ввод: ВВГнг(А)-FRLSLTx 5×2,5 (от РП4/АВР)<br>Защита: ВА47-63 С10<br>Кабель: ВВГнг(А)-FRLSLTx 4×1,5 (огнестойкий)</div>
+    </div>
+</header>
+
+<main class="grid">
+
+<!-- SVG Icons -->
+<svg style="display:none;">
+    <symbol id="icon-outlet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="9" cy="8" r="1.5" fill="currentColor"/><circle cx="15" cy="8" r="1.5" fill="currentColor"/><line x1="9" y1="14" x2="9" y2="18"/><line x1="15" y1="14" x2="15" y2="18"/>
+    </symbol>
+    <symbol id="icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 18h6M10 22h4M12 2v1M12 7a5 5 0 100 10 5 5 0 000-10z"/><path d="M12 17v3M8 21h8"/>
+    </symbol>
+    <symbol id="icon-emergency" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/><circle cx="12" cy="12" r="3" fill="currentColor" opacity="0.3"/>
+    </symbol>
+    <symbol id="icon-cable" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 12h4M16 12h4M8 12a4 4 0 018 0"/><circle cx="8" cy="12" r="2" fill="currentColor" opacity="0.3"/><circle cx="16" cy="12" r="2" fill="currentColor" opacity="0.3"/>
+    </symbol>
+</svg>
+
+<!-- Пом. 1 -->
+<article class="card"><div class="h"><span class="id">Пом. 1</span><span class="area">Класс | 54,6 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розеточная сеть (ЩР3)</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-1 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">1,0 кВт / 75 м</span></div><div class="r"><span class="lb">Защита</span><span class="vl">АД32 С16, 30мА, 1Р+N</span></div><div class="r"><span class="lb">Прокладка</span><span class="vl">Скрыто в штробе</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Рабочее освещение (ЩО3)</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.О3-3 / ВВГнг(А)-LSLTx 3×1,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Нагрузка / Длина</span><span class="vl">1,29 кВт (совм. с 2,3,4) / 120 м</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40 (1×30Вт)</span></div><div class="r"><span class="lb">Защита</span><span class="vl">ВА47-63 С10</span></div></div>
+<div class="eq"><strong>Оборудование:</strong> Розетки 2-местные IP20 (~3 шт.), выключатель скрытый 1-кл. 10А (1 шт.), светильники IP40 (~4 шт.)</div>
+<div class="note">⚠️ Высота розеток/выключателей: 1,8 м от ч.п.</div>
+</article>
+
+<!-- Пом. 2 -->
+<article class="card"><div class="h"><span class="id">Пом. 2</span><span class="area">Класс | 18,1 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-1 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">1,0 кВт / 85 м</span></div><div class="r"><span class="lb">Защита</span><span class="vl">АД32 С16, 30мА</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-3 (совм.)</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40 (~2 шт.)</span></div></div>
+<div class="eq">Розетки 2-местные IP20 (~2 шт.), выключатель скрытый 1-кл. 10А</div>
+</article>
+
+<!-- Пом. 3 -->
+<article class="card"><div class="h"><span class="id">Пом. 3</span><span class="area">Класс | 74,3 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-2 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">1,0 кВт / 71 м</span></div><div class="r"><span class="lb">Защита</span><span class="vl">АД32 С16, 30мА</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-3</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40 (~5 шт.)</span></div></div>
+<div class="eq">Розетки 2-местные IP20 (~4 шт.), выключатель 2-кл. скрытый 10А</div>
+</article>
+
+<!-- Пом. 4 -->
+<article class="card"><div class="h"><span class="id">Пом. 4</span><span class="area">Класс | 17,2 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-2 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">1,0 кВт / 88 м</span></div><div class="r"><span class="lb">Защита</span><span class="vl">АД32 С16, 30мА</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-3</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40 (~2 шт.)</span></div></div>
+<div class="eq">Розетки 2-местные IP20 (~2 шт.), выключатель 1-кл. скрытый</div>
+</article>
+
+<!-- Пом. 5 -->
+<article class="card"><div class="h"><span class="id">Пом. 5</span><span class="area">Класс | 62,3 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-3 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">1,0 кВт / 93 м</span></div><div class="r"><span class="lb">Защита</span><span class="vl">АД32 С16, 30мА</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.О3-4 / ВВГнг(А)-LSLTx 3×1,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Нагрузка / Длина</span><span class="vl">1,02 кВт (совм. с 6) / 135 м</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40</span></div></div>
+<div class="eq">Розетки 2-местные IP20 (~4 шт.), выключатель 1-кл. скрытый, светильники IP40 (~5 шт.)</div>
+</article>
+
+<!-- Пом. 6 -->
+<article class="card"><div class="h"><span class="id">Пом. 6</span><span class="area">Класс | 56,4 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-4 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">1,0 кВт / 90 м</span></div><div class="r"><span class="lb">Защита</span><span class="vl">АД32 С16, 30мА</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-4</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40 (~4 шт.)</span></div></div>
+<div class="eq">Розетки 2-местные IP20 (~4 шт.), выключатель 1-кл. скрытый</div>
+</article>
+
+<!-- Пом. 7 -->
+<article class="card"><div class="h"><span class="id">Пом. 7</span><span class="area">Класс | 53,3 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-5 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">1,0 кВт / 79 м</span></div><div class="r"><span class="lb">Защита</span><span class="vl">АД32 С16, 30мА</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.О3-5 / ВВГнг(А)-LSLTx 3×1,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Нагрузка / Длина</span><span class="vl">1,20 кВт (совм. с 8,9) / 154 м</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40</span></div></div>
+<div class="eq">Розетки 2-местные IP20 (~4 шт.), выключатель 1-кл. скрытый, светильники IP40 (~4 шт.)</div>
+</article>
+
+<!-- Пом. 8 -->
+<article class="card"><div class="h"><span class="id">Пом. 8</span><span class="area">Класс | 72,6 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-6 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">1,0 кВт / 77 м</span></div><div class="r"><span class="lb">Защита</span><span class="vl">АД32 С16, 30мА</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40 (~5 шт.)</span></div></div>
+<div class="eq">Розетки 2-местные IP20 (~4 шт.), выключатель 2-кл. скрытый</div>
+</article>
+
+<!-- Пом. 9 -->
+<article class="card"><div class="h"><span class="id">Пом. 9</span><span class="area">Класс | 17,9 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-6 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">1,0 кВт / 77 м (ответвление)</span></div><div class="r"><span class="lb">Защита</span><span class="vl">АД32 С16, 30мА</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40 (~2 шт.)</span></div></div>
+<div class="eq">Розетки 2-местные IP20 (~2 шт.), выключатель 1-кл. скрытый</div>
+</article>
+
+<!-- Пом. 10 -->
+<article class="card"><div class="h"><span class="id">Пом. 10</span><span class="area">Класс | 73,2 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-7 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">1,0 кВт / 35 м</span></div><div class="r"><span class="lb">Защита</span><span class="vl">АД32 С16, 30мА</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.О3-6 / ВВГнг(А)-LSLTx 3×1,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Нагрузка / Длина</span><span class="vl">0,72 кВт (совм. с 11) / 85 м</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40</span></div></div>
+<div class="eq">Розетки 2-местные IP20 (~5 шт.), выключатель 1-кл. скрытый, светильники IP40 (~5 шт.)</div>
+</article>
+
+<!-- Пом. 11 -->
+<article class="card"><div class="h"><span class="id">Пом. 11</span><span class="area">Класс | 17,8 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-7 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">1,0 кВт / 31 м</span></div><div class="r"><span class="lb">Защита</span><span class="vl">АД32 С16, 30мА</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-6</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40 (~2 шт.)</span></div></div>
+<div class="eq">Розетки 2-местные IP20 (~2 шт.), выключатель 1-кл. скрытый</div>
+</article>
+
+<!-- Пом. 12 -->
+<article class="card" style="border-top-color:var(--lit)"><div class="h"><span class="id">Пом. 12</span><span class="area">Лест. клетка | 16,7 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа / Кабель</span><span class="vl">Гр.О3-11 / ВВГнг(А)-LSLTx 3×1,5</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST ЖКХ-С 10 IP65 (накладные, 1×10Вт) (2 шт.)</span></div><div class="r"><span class="lb">Защита</span><span class="vl">ВА47-63 С10</span></div></div>
+<div class="eq">Выключатель открытый IP44, 10А. Прокладка в кабель-канале/штробе.</div>
+</article>
+
+<!-- Пом. 13 -->
+<article class="card"><div class="h"><span class="id">Пом. 13</span><span class="area">Класс | 20,2 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-8 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">1,5 кВт (повыш.) / 45 м</span></div><div class="r"><span class="lb">Защита</span><span class="vl">АД32 С16, 30мА</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.О3-7 / ВВГнг(А)-LSLTx 3×1,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Нагрузка / Длина</span><span class="vl">0,84 кВт (совм. с 14,15) / 86 м</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40</span></div></div>
+<div class="eq">Розетки 2-местные IP20 (~2 шт.), выключатель 1-кл. скрытый, светильники IP40 (~2 шт.)</div>
+</article>
+
+<!-- Пом. 14 -->
+<article class="card"><div class="h"><span class="id">Пом. 14</span><span class="area">Класс | 72,4 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-8 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">1,5 кВт / 61 м</span></div><div class="r"><span class="lb">Защита</span><span class="vl">АД32 С16, 30мА</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-7</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40 (~5 шт.)</span></div></div>
+<div class="eq">Розетки 2-местные IP20 (~5 шт.), выключатель 2-кл. скрытый</div>
+</article>
+
+<!-- Пом. 15 -->
+<article class="card"><div class="h"><span class="id">Пом. 15</span><span class="area">Класс | 17,6 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.Р3-8 (резерв/ответвление)</span></div><div class="r"><span class="lb">Кабель</span><span class="vl">ВВГнг(А)-LSLTx 3×2,5</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-7</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40 (~2 шт.)</span></div></div>
+<div class="eq">Розетки 2-местные IP20 (~2 шт.), выключатель 1-кл. скрытый</div>
+</article>
+
+<!-- Пом. 16 -->
+<article class="card" style="border-top-color:var(--lit)"><div class="h"><span class="id">Пом. 16</span><span class="area">Лест. клетка | 17,0 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-11 (совм. с другими вспом.)</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST ЖКХ-С 10 IP65 (2 шт.)</span></div><div class="r"><span class="lb">Кабель</span><span class="vl">ВВГнг(А)-LSLTx 3×1,5</span></div></div>
+<div class="eq">Выключатель открытый IP44. Эвакуационный путь.</div>
+</article>
+
+<!-- Пом. 17 -->
+<article class="card"><div class="h"><span class="id">Пом. 17</span><span class="area">Класс | 55,3 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-9 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">1,0 кВт / 35 м</span></div><div class="r"><span class="lb">Защита</span><span class="vl">АД32 С16, 30мА</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.О3-1 / ВВГнг(А)-LSLTx 3×1,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Нагрузка / Длина</span><span class="vl">1,02 кВт (совм. с 18) / 50 м</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40</span></div></div>
+<div class="eq">Розетки 2-местные IP20 (~4 шт.), выключатель 1-кл. скрытый, светильники IP40 (~4 шт.)</div>
+</article>
+
+<!-- Пом. 18 -->
+<article class="card"><div class="h"><span class="id">Пом. 18</span><span class="area">Класс | 55,3 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-10 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">1,0 кВт / 31 м</span></div><div class="r"><span class="lb">Защита</span><span class="vl">АД32 С16, 30мА</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-1</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40 (~4 шт.)</span></div></div>
+<div class="eq">Розетки 2-местные IP20 (~4 шт.), выключатель 1-кл. скрытый</div>
+</article>
+
+<!-- Пом. 19 -->
+<article class="card"><div class="h"><span class="id">Пом. 19</span><span class="area">Класс | 54,2 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-11 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">1,0 кВт / 45 м</span></div><div class="r"><span class="lb">Защита</span><span class="vl">АД32 С16, 30мА</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.О3-2 / ВВГнг(А)-LSLTx 3×1,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Нагрузка / Длина</span><span class="vl">1,11 кВт (совм. с 20) / 70 м</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40</span></div></div>
+<div class="eq">Розетки 2-местные IP20 (~4 шт.), выключатель 2-кл. скрытый, светильники IP40 (~4 шт.)</div>
+</article>
+
+<!-- Пом. 20 -->
+<article class="card"><div class="h"><span class="id">Пом. 20</span><span class="area">Класс | 61,0 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-12 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">1,0 кВт / 61 м</span></div><div class="r"><span class="lb">Защита</span><span class="vl">АД32 С16, 30мА</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-2</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40 (~5 шт.)</span></div></div>
+<div class="eq">Розетки 2-местные IP20 (~4 шт.), выключатель 1-кл. скрытый</div>
+</article>
+
+<!-- Пом. 21 -->
+<article class="card" style="border-top-color:var(--emr)"><div class="h"><span class="id">Пом. 21</span><span class="area">Коридор | 197,8 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Рабочее освещение</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.О3-9 / ВВГнг(А)-LSLTx 3×1,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Нагрузка / Длина</span><span class="vl">0,51 кВт / 70 м</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40 (~8 шт.)</span></div><div class="r"><span class="lb">Защита</span><span class="vl">ВА47-63 С10</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-emr"><use href="#icon-emergency"></use></svg>Аварийное освещение</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.АО3-1 / ВВГнг(А)-FRLSLTx 4×1,5</span></div><div class="r"><span class="lb">Длина / Защита</span><span class="vl">75 м / ВА47-63 С10</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-emr"><use href="#icon-emergency"></use></svg>Особенность</span><span class="vl">Светильники со встроенным БАП (3 шт.)</span></div></div>
+<div class="eq">Выключатели 1-кл. скрытые. Расстояние рабочего/аварийного кабеля ≥20 мм.</div>
+<div class="note">🔋 Между БАП и лампами запрещена установка коммутационных аппаратов.</div>
+</article>
+
+<!-- Пом. 22 -->
+<article class="card"><div class="h"><span class="id">Пом. 22</span><span class="area">Класс | 23,2 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-13 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">1,0 кВт / 33 м</span></div><div class="r"><span class="lb">Защита</span><span class="vl">АД32 С16, 30мА</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.О3-8 / ВВГнг(А)-LSLTx 3×1,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Нагрузка / Длина</span><span class="vl">0,60 кВт (совм. с 23,24) / 65 м</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40</span></div></div>
+<div class="eq">Розетки 2-местные IP20 (~2 шт.), выключатель 1-кл. скрытый, светильники IP40 (~2 шт.)</div>
+</article>
+
+<!-- Пом. 23 -->
+<article class="card"><div class="h"><span class="id">Пом. 23</span><span class="area">Класс | 25,4 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-14 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">1,0 кВт / 43 м</span></div><div class="r"><span class="lb">Защита</span><span class="vl">АД32 С16, 30мА</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-8</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40 (~2 шт.)</span></div></div>
+<div class="eq">Розетки 2-местные IP20 (~2 шт.), выключатель 1-кл. скрытый</div>
+</article>
+
+<!-- Пом. 24 -->
+<article class="card"><div class="h"><span class="id">Пом. 24</span><span class="area">Класс | 24,3 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-15 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">1,0 кВт / 45 м</span></div><div class="r"><span class="lb">Защита</span><span class="vl">АД32 С16, 30мА</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-8</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40 (~2 шт.)</span></div></div>
+<div class="eq">Розетки 2-местные IP20 (~2 шт.), выключатель 1-кл. скрытый</div>
+</article>
+
+<!-- Пом. 25 -->
+<article class="card" style="border-top-color:var(--emr)"><div class="h"><span class="id">Пом. 25</span><span class="area">Коридор | 196,5 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Рабочее освещение</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.О3-10 / ВВГнг(А)-LSLTx 3×1,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Нагрузка / Длина</span><span class="vl">0,51 кВт / 92 м</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40 (~8 шт.)</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-emr"><use href="#icon-emergency"></use></svg>Аварийное освещение</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.АО3-2 / ВВГнг(А)-FRLSLTx 4×1,5</span></div><div class="r"><span class="lb">Длина / Защита</span><span class="vl">80 м / ВА47-63 С10</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-emr"><use href="#icon-emergency"></use></svg>Особенность</span><span class="vl">Светильники со встроенным БАП (3 шт.)</span></div></div>
+<div class="eq">Выключатели скрытые. Эвакуационный путь. Огнестойкий кабель.</div>
+</article>
+
+<!-- Пом. 26 -->
+<article class="card" style="border-top-color:var(--tech)"><div class="h"><span class="id">Пом. 26</span><span class="area">Сан. узел | 11,5 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-11 (совм. 26-35)</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST ЖКХ-С 10 IP65 (накладные, 1×10Вт) (1 шт.)</span></div><div class="r"><span class="lb">Высота</span><span class="vl">2,7 м от ч.п.</span></div></div>
+<div class="eq">Выключатель вынесен наружу (1,8 м). IP65 обязательно.</div>
+</article>
+
+<!-- Пом. 27 -->
+<article class="card" style="border-top-color:var(--pow)"><div class="h"><span class="id">Пом. 27</span><span class="area">Сан. узел | 13,2 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки (рукосушитель)</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-17 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">3,0 кВт / 46 м</span></div><div class="r"><span class="lb">Тип</span><span class="vl">1-местная IP44 с крышкой (1 шт.)</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-11</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Светильники</span><span class="vl">BEST ЖКХ-С 10 IP65 (1 шт., h=2,7м)</span></div></div>
+<div class="note">⚠️ Влажное помещение. Выключатель снаружи. IP44/IP65.</div>
+</article>
+
+<!-- Пом. 28 -->
+<article class="card" style="border-top-color:var(--tech)"><div class="h"><span class="id">Пом. 28</span><span class="area">Сан. узел | 6,8 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-11</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST ЖКХ-С 10 IP65 (1 шт.)</span></div></div>
+<div class="eq">Выключатель вынесен наружу. Прокладка в ПВХ-трубе.</div>
+</article>
+
+<!-- Пом. 29 -->
+<article class="card" style="border-top-color:var(--tech)"><div class="h"><span class="id">Пом. 29</span><span class="area">Сан. узел | 6,4 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-11</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST ЖКХ-С 10 IP65 (1 шт.)</span></div></div>
+</article>
+
+<!-- Пом. 30 -->
+<article class="card" style="border-top-color:var(--tech)"><div class="h"><span class="id">Пом. 30</span><span class="area">Сан. узел | 1,3 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-11</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST ЖКХ-С 10 IP65 (1 шт.)</span></div></div>
+</article>
+
+<!-- Пом. 31 -->
+<article class="card" style="border-top-color:var(--tech)"><div class="h"><span class="id">Пом. 31</span><span class="area">Сан. узел | 3,5 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-11</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST ЖКХ-С 10 IP65 (1 шт.)</span></div></div>
+</article>
+
+<!-- Пом. 32 -->
+<article class="card" style="border-top-color:var(--tech)"><div class="h"><span class="id">Пом. 32</span><span class="area">Сан. узел | 1,7 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-11</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST ЖКХ-С 10 IP65 (1 шт.)</span></div></div>
+</article>
+
+<!-- Пом. 33 -->
+<article class="card" style="border-top-color:var(--tech)"><div class="h"><span class="id">Пом. 33</span><span class="area">Кладовая | 1,7 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-11</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST ЖКХ-С 10 IP65 (1 шт.)</span></div></div>
+<div class="eq">⚠️ Выключатель установить в запирающий шкафчик с возможностью опломбирования.</div>
+</article>
+
+<!-- Пом. 34 -->
+<article class="card" style="border-top-color:var(--pow)"><div class="h"><span class="id">Пом. 34</span><span class="area">Сан. узел | 13,4 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки (рукосушитель)</div><div class="r"><span class="lb"><svg class="mini-icon icon-cable"><use href="#icon-cable"></use></svg>Группа / Кабель</span><span class="vl">Гр.Р3-16 / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-pow"><use href="#icon-outlet"></use></svg>Нагрузка / Длина</span><span class="vl">3,0 кВт / 33 м</span></div><div class="r"><span class="lb">Тип</span><span class="vl">1-местная IP44 с крышкой (1 шт.)</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-11</span></div><div class="r"><span class="lb"><svg class="mini-icon icon-lit"><use href="#icon-light"></use></svg>Светильники</span><span class="vl">BEST ЖКХ-С 10 IP65 (1 шт., h=2,7м)</span></div></div>
+<div class="note">⚠️ Влажное помещение. Выключатель снаружи.</div>
+</article>
+
+<!-- Пом. 35 -->
+<article class="card" style="border-top-color:var(--tech)"><div class="h"><span class="id">Пом. 35</span><span class="area">Сан. узел | 10,9 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-11</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST ЖКХ-С 10 IP65 (1 шт.)</span></div></div>
+</article>
+
+<!-- Пом. 36 -->
+<article class="card" style="border-top-color:var(--tech)"><div class="h"><span class="id">Пом. 36</span><span class="area">Сан. узел | 6,8 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-11</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST ЖКХ-С 10 IP65 (1 шт.)</span></div></div>
+</article>
+
+<!-- Пом. 37 -->
+<article class="card" style="border-top-color:var(--tech)"><div class="h"><span class="id">Пом. 37</span><span class="area">Сан. узел | 1,7 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-11</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST ЖКХ-С 10 IP65 (1 шт.)</span></div></div>
+</article>
+
+<!-- Пом. 38 -->
+<article class="card"><div class="h"><span class="id">Пом. 38</span><span class="area">Площадка | 364,0 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-11 / резерв ЩО3</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40 + ЖКХ-С 10 IP65 (~15 шт.)</span></div></div>
+<div class="eq">Розетки накладные IP20 для уборочной техники (2 шт., h=0,3-1,0м). Эвакуационные указатели.</div>
+</article>
+
+<!-- Пом. 39 -->
+<article class="card" style="border-top-color:var(--lit)"><div class="h"><span class="id">Пом. 39</span><span class="area">Лест. клетка | 17,9 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-11 (совм.)</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST ЖКХ-С 10 IP65 (2 шт.)</span></div></div>
+<div class="eq">Выключатель открытый IP44. Эвакуационный путь.</div>
+</article>
+
+<!-- Пом. 40 -->
+<article class="card"><div class="h"><span class="id">Пом. 40</span><span class="area">Актовый зал | 169,0 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Питание</span><span class="vl">Через резерв/смежные щиты (уточняется по актуализации)</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST OFFICE CLASS 30 IP40 (~10 шт.)</span></div></div>
+<div class="note">📐 Точная разводка уточняется на месте. Нормы освещённости 200-300 лк.</div>
+</article>
+
+<!-- Пом. 41 -->
+<article class="card" style="border-top-color:var(--tech)"><div class="h"><span class="id">Пом. 41</span><span class="area">Склад | 3,6 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb">Группа / Кабель</span><span class="vl">Гр.Р2-4-5 (с 2 этажа) / ВВГнг(А)-LSLTx 3×2,5</span></div><div class="r"><span class="lb">Нагрузка / Длина</span><span class="vl">0,5 кВт / 28 м</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа / Кабель</span><span class="vl">Гр.О2-2-8 / ВВГнг(А)-LSLTx 3×1,5</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST ЖКХ-С 10 IP65 (1 шт.)</span></div></div>
+<div class="eq">Розетка накладная IP20 (h=0,3-1,0м). Выключатель скрытый.</div>
+</article>
+
+<!-- Пом. 42 -->
+<article class="card"><div class="h"><span class="id">Пом. 42</span><span class="area">Коридор | 4,8 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Группа</span><span class="vl">Гр.О3-11 (совм.)</span></div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST ЖКХ-С 10 IP65 (1 шт.)</span></div></div>
+</article>
+
+<!-- Пом. 43 -->
+<article class="card" style="border-top-color:var(--tech)"><div class="h"><span class="id">Пом. 43</span><span class="area">Аппаратная | 18,3 м²</span></div>
+<div class="sec"><div class="st"><svg class="icon icon-pow"><use href="#icon-outlet"></use></svg>Розетки</div><div class="r"><span class="lb">Тип / Высота</span><span class="vl">Встроенные IP20, 16А (h=0,3-1,0м) (2-3 шт.)</span></div></div>
+<div class="sec"><div class="st"><svg class="icon icon-lit"><use href="#icon-light"></use></svg>Освещение</div><div class="r"><span class="lb">Светильники</span><span class="vl">BEST ЖКХ-С 10 IP65 (2 шт.)</span></div></div>
+<div class="note">⚠️ Монтаж светильников строго ПОСЛЕ установки венткоробов и труб. Прокладка открыто в ПВХ-трубах.</div>
+</article>
+
+</main>
+
+<footer>
+    <p>📄 Нормативная база: ПУЭ (7 изд.), СП 256.1325800.2016, СП 52.13330.2016, ГОСТ Р 50571.4.41-2022, ГОСТ Р 50571.5.52-2011.<br>
+    ⚠️ Данные строго из проекта 04-2023-ЭОМ (листы 16, 21, 26, 31, 35, 39). Точные места установки оборудования согласовываются с планом разметки. Перед вводом аварийного освещения обязателен цикл заряд-разряд АКБ.</p>
+</footer>
+
+</body>
+</html>
