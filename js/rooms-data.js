@@ -71,9 +71,23 @@ const roomsData = [
     socketLength: "71 м",
     socketProtection: "АД32 С16, 30мА",
     lightGroup: "Гр.О3-3",
-    lightFixtures: "BEST OFFICE CLASS 30 IP40 (~5 шт.)",
-    equipment: "Розетки 2-местные IP20 (~4 шт.), выключатель 2-кл. скрытый 10А",
-    hasSchemes: false
+    lightFixtures: "BEST OFFICE CLASS 30 IP40 (18 шт.)",
+    equipment: [
+      "Светильник светодиодный, 1х30Вт, IP40 BEST OFFICE CLASS 30 IP40 (18 шт.)",
+      "Светильник светодиодный, 1х30Вт, IP40, для освещения досок BEST ССП PL-03 CLASS 30 (2 шт.)",
+      "Выключатель одноклавишный для скрытой установки, IP20, 10А EKF Валенсия EWV10-021-10 (2 шт.)",
+      "Выключатель двухклавишный для скрытой установки, IP20, 10А EKF Валенсия EWV10-023-10 (1 шт.)",
+      "Розетка встроенная 2-местная с/з 16А (IP20) EKF Валенсия EWR16-128-10 (3 шт.)",
+      "Розетка накладная 1-местная с/з 16А (IP20) EKF Минск EGR16-028-10 (1 шт.)",
+      "Кабель канал (3 м)",
+      "Проходные отверстия с гильзами диаметр до 25 мм (2 шт.)",
+      "Штроба (27 м)"
+    ],
+    hasSchemes: true,
+    schemes: {
+      lighting: "images/pom3-lighting.png",
+      sockets: "images/pom3-sockets.png"
+    }
   },
   {
     id: 4,
