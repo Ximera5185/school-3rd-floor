@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3-й этаж | МБОУ СОШ №28 | Электроснабжение</title>
+<style>
+:root {
+--bg: #f8fafc; --card: #ffffff; --primary: #2563eb;
+--pow: #f59e0b; --lit: #10b981; --emr: #ef4444; --tech: #6b7280;
+--txt: #0f172a; --sec: #475569; --bdr: #e2e8f0;
+--shadow: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -1px rgba(0,0,0,0.04);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+body { background: var(--bg); color: var(--txt); padding: 20px; line-height: 1.4; }
+header { max-width: 1400px; margin: 0 auto 24px; background: var(--card); padding: 20px; border-radius: 12px; box-shadow: var(--shadow); border-left: 5px solid var(--primary); }
+h1 { font-size: 1.6rem; margin-bottom: 6px; }
+.meta { color: var(--sec); font-size: 0.85rem; margin-bottom: 10px; }
+.global-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-top: 12px; }
+.g-box { background: #f1f5f9; padding: 10px; border-radius: 8px; font-size: 0.8rem; }
+.g-box strong { display: block; color: var(--primary); margin-bottom: 4px; font-size: 0.75rem; text-transform: uppercase; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px; max-width: 1400px; margin: 0 auto; }
+.card { background: var(--card); border-radius: 10px; padding: 16px; box-shadow: var(--shadow); border-top: 4px solid var(--bdr); transition: transform 0.2s; cursor: pointer; }
+.card:hover { transform: translateY(-2px); }
+.card[data-room]:hover { border-color: var(--primary); transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+.h { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid var(--bdr); padding-bottom: 8px; }
+.id { font-size: 1.15rem; font-weight: 700; color: var(--primary); }
+.area { background: #f1f5f9; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; color: var(--sec); font-weight: 500; }
+.sec { margin-bottom: 8px; }
+.st { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--sec); margin-bottom: 4px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.icon { width: 14px; height: 14px; flex-shrink: 0; }
+.icon-pow { color: var(--pow); }
+.icon-lit { color: var(--lit); }
+.icon-emr { color: var(--emr); }
+.icon-cable { color: var(--tech); }
+.r { display: flex; justify-content: space-between; font-size: 0.82rem; margin: 3px 0; align-items: center; }
+.lb { color: var(--sec); min-width: 45%; display: flex; align-items: center; gap: 5px; }
+.vl { font-weight: 500; text-align: right; word-break: break-word; }
+.mini-icon { width: 11px; height: 11px; opacity: 0.7; }
+.eq { background: #f8fafc; padding: 6px; border-radius: 6px; margin-top: 6px; font-size: 0.78rem; border-left: 3px solid var(--tech); }
+.eq ul { margin: 4px 0 0 0; padding-left: 18px; }
+.eq li { margin-bottom: 3px; }
+.eq li::marker { color: var(--tech); }
+.note { font-size: 0.75rem; background: #fefce8; padding: 6px; border-radius: 6px; margin-top: 8px; border-left: 3px solid var(--pow); color: #854d0e; }
+footer { max-width: 1400px; margin: 24px auto 0; text-align: center; font-size: 0.75rem; color: var(--sec); border-top: 1px solid var(--bdr); padding-top: 12px; }
+@media(max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+
+/* Modal Styles */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  overflow-y: auto;
+  padding: 20px;
+}
+.modal-overlay.active {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.modal-content {
+  background: var(--card);
+  border-radius: 12px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 20px auto;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.modal-header {
+  background: var(--primary);
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-header h2 {
+  font-size: 1.4rem;
+  margin: 0;
+}
+.close-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+.modal-body {
+  padding: 24px;
+}
+.schemes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 24px;
+}
+.scheme-item {
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 16px;
+  border: 2px solid var(--bdr);
+}
+.scheme-item h3 {
+  color: var(--primary);
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+.scheme-image {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid var(--bdr);
+}
+@media(max-width: 768px) {
+  .schemes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+<h1>⚡ Электроснабжение: 3-й этаж (по помещениям)</h1>
+<p class="meta">Проект: 04-2023-ЭОМ | Объект: МБОУ г. Иркутска СОШ № 28 | Питание от ВРУ1 (подвал) через РП1/РП2/РП4</p>
+<div class="global-info">
+<div class="g-box"><strong>ЩР3 (Розетки)</strong>Ввод: ВВГнг(А)-LSLTx 5×10 (43м)<br>Защита групп: АД32 С16, 30мА, 1Р+N<br>Кабель групп: ВВГнг(А)-LSLTx 3×2,5</div>
+<div class="g-box"><strong>ЩО3 (Освещение)</strong>Ввод: ВВГнг(А)-LSLTx 5×6 (45м)<br>Защита групп: ВА47-63 С10, 1Р<br>Кабель групп: ВВГнг(А)-LSLTx 3×1,5</div>
+<div class="g-box"><strong>ЩАО3 (Аварийное)</strong>Ввод: ВВГнг(А)-FRLSLTx 5×2,5 (от РП4/АВР)<br>Защита: ВА47-63 С10<br>Кабель: ВВГнг(А)-FRLSLTx 4×1,5 (огнестойкий)</div>
+</div>
+</header>
+<main class="grid" id="roomsGrid">
+<!-- Карточки будут сгенерированы JavaScript -->
+</main>
+
+<!-- Modal for Room Schemes -->
+<div class="modal-overlay" id="schemeModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="modalTitle">📐 Схема помещения</h2>
+      <button class="close-btn" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="schemes-grid" id="schemesContent">
+        <!-- Схемы будут добавлены здесь -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+<p>📄 Нормативная база: ПУЭ (7 изд.), СП 256.1325800.2016, СП 52.13330.2016, ГОСТ Р 50571.4.41-2022, ГОСТ Р 50571.5.52-2011.<br>
+⚠️ Данные строго из проекта 04-2023-ЭОМ (листы 16, 21, 26, 31, 35, 39). Точные места установки оборудования согласовываются с планом разметки. Перед вводом аварийного освещения обязателен цикл заряд-разряд АКБ.</p>
+</footer>
+
+<!-- Подключаем данные -->
+<script src="js/rooms-data.js"></script>
+
+<script>
+// SVG Icons
+const icons = {
+  outlet: `<svg class="icon icon-pow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="9" cy="8" r="1.5" fill="currentColor"/><circle cx="15" cy="8" r="1.5" fill="currentColor"/><line x1="9" y1="14" x2="9" y2="18"/><line x1="15" y1="14" x2="15" y2="18"/></svg>`,
+  light: `<svg class="icon icon-lit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2v1M12 7a5 5 0 100 10 5 5 0 000-10z"/><path d="M12 17v3M8 21h8"/></svg>`,
+  emergency: `<svg class="icon icon-emr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/><circle cx="12" cy="12" r="3" fill="currentColor" opacity="0.3"/></svg>`,
+  cable: `<svg class="icon icon-cable" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h4M16 12h4M8 12a4 4 0 018 0"/><circle cx="8" cy="12" r="2" fill="currentColor" opacity="0.3"/><circle cx="16" cy="12" r="2" fill="currentColor" opacity="0.3"/></svg>`,
+  miniCable: `<svg class="mini-icon icon-cable" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h4M16 12h4M8 12a4 4 0 018 0"/><circle cx="8" cy="12" r="2" fill="currentColor" opacity="0.3"/><circle cx="16" cy="12" r="2" fill="currentColor" opacity="0.3"/></svg>`,
+  miniOutlet: `<svg class="mini-icon icon-pow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="9" cy="8" r="1.5" fill="currentColor"/><circle cx="15" cy="8" r="1.5" fill="currentColor"/><line x1="9" y1="14" x2="9" y2="18"/><line x1="15" y1="14" x2="15" y2="18"/></svg>`,
+  miniLight: `<svg class="mini-icon icon-lit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2v1M12 7a5 5 0 100 10 5 5 0 000-10z"/><path d="M12 17v3M8 21h8"/></svg>`,
+  miniEmergency: `<svg class="mini-icon icon-emr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/><circle cx="12" cy="12" r="3" fill="currentColor" opacity="0.3"/></svg>`
+};
+
+// Create card HTML
+function createCard(room) {
+  let borderColor = room.borderColor || '';
+  let borderStyle = borderColor ? `style="border-top-color:${borderColor}"` : '';
+  
+  let html = `<article class="card" ${room.hasSchemes ? `data-room="${room.id}"` : ''} ${borderStyle}>
+    <div class="h">
+      <span class="id">${room.name}</span>
+      <span class="area">${room.type} | ${room.area} м²</span>
+    </div>`;
+  
+  // Socket section
+  if (room.socketGroup) {
+    html += `<div class="sec">
+      <div class="st">${icons.outlet}Розеточная сеть (${room.socketGroup.includes('ЩР') ? room.socketGroup.split(' ')[0] : 'ЩР3'})</div>
+      <div class="r"><span class="lb">${icons.miniCable}Группа / Кабель</span><span class="vl">${room.socketGroup} / ${room.socketCable || 'ВВГнг(А)-LSLTx 3×2,5'}</span></div>
+      ${room.socketPower ? `<div class="r"><span class="lb">${icons.miniOutlet}Нагрузка / Длина</span><span class="vl">${room.socketPower} / ${room.socketLength}</span></div>` : ''}
+      ${room.socketProtection ? `<div class="r"><span class="lb">Защита</span><span class="vl">${room.socketProtection}</span></div>` : ''}
+      ${room.socketType ? `<div class="r"><span class="lb">Тип</span><span class="vl">${room.socketType}</span></div>` : ''}
+    </div>`;
+  }
+  
+  // Light section
+  if (room.lightGroup) {
+    html += `<div class="sec">
+      <div class="st">${icons.light}${room.emergencyLightGroup ? 'Рабочее ' : ''}освещение (${room.lightGroup.includes('ЩО') ? room.lightGroup.split(' ')[0] : 'ЩО3'})</div>
+      <div class="r"><span class="lb">${icons.miniCable}Группа / Кабель</span><span class="vl">${room.lightGroup} / ${room.lightCable || 'ВВГнг(А)-LSLTx 3×1,5'}</span></div>
+      ${room.lightPower ? `<div class="r"><span class="lb">${icons.miniLight}Нагрузка / Длина</span><span class="vl">${room.lightPower} / ${room.lightLength || ''}</span></div>` : ''}
+      ${room.lightFixtures ? `<div class="r"><span class="lb">Светильники</span><span class="vl">${room.lightFixtures}</span></div>` : ''}
+      ${room.lightProtection ? `<div class="r"><span class="lb">Защита</span><span class="vl">${room.lightProtection}</span></div>` : ''}
+      ${room.lightHeight ? `<div class="r"><span class="lb">Высота</span><span class="vl">${room.lightHeight}</span></div>` : ''}
+    </div>`;
+  }
+  
+  // Emergency light section
+  if (room.emergencyLightGroup) {
+    html += `<div class="sec">
+      <div class="st">${icons.emergency}Аварийное освещение</div>
+      <div class="r"><span class="lb">${icons.miniCable}Группа / Кабель</span><span class="vl">${room.emergencyLightGroup} / ${room.emergencyLightCable}</span></div>
+      <div class="r"><span class="lb">Длина / Защита</span><span class="vl">${room.emergencyLightLength} / ${room.emergencyLightProtection}</span></div>
+      ${room.emergencyNote ? `<div class="r"><span class="lb">${icons.miniEmergency}Особенность</span><span class="vl">${room.emergencyNote}</span></div>` : ''}
+    </div>`;
+  }
+  
+  // Equipment (supports Array or String)
+  if (room.equipment) {
+    if (Array.isArray(room.equipment)) {
+      html += `<div class="eq"><strong>Оборудование:</strong><ul>${room.equipment.map(item => `<li>${item}</li>`).join('')}</ul></div>`;
+    } else {
+      html += `<div class="eq"><strong>Оборудование:</strong> ${room.equipment}</div>`;
+    }
+  }
+  
+  // Note
+  if (room.note) {
+    html += `<div class="note">${room.note}</div>`;
+  }
+  
+  html += `</article>`;
+  return html;
+}
+
+// Render all rooms
+function renderRooms() {
+  const grid = document.getElementById('roomsGrid');
+  grid.innerHTML = roomsData.map(room => createCard(room)).join('');
+  
+  // Add click handlers for rooms with schemes
+  document.querySelectorAll('.card[data-room]').forEach(card => {
+    card.addEventListener('click', function(e) {
+      if (e.target.closest('a') || e.target.closest('button')) return;
+      const roomId = parseInt(this.getAttribute('data-room'));
+      openModal(roomId);
+    });
+  });
+}
+
+// Open modal with schemes
+function openModal(roomId) {
+  const room = roomsData.find(r => r.id === roomId);
+  if (!room || !room.hasSchemes || !room.schemes) return;
+  
+  document.getElementById('modalTitle').textContent = `📐 Схема - ${room.name} (${room.type} ${room.area} м²)`;
+  
+  const schemesContent = document.getElementById('schemesContent');
+  schemesContent.innerHTML = `
+    <div class="scheme-item">
+      <h3>💡 Схема освещения (${room.lightGroup})</h3>
+      <img src="${room.schemes.lighting}" alt="Схема освещения" class="scheme-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 300%27%3E%3Crect fill=%27%23f8fafc%27 width=%27400%27 height=%27300%27/%3E%3Ctext x=%27200%27 y=%27150%27 text-anchor=%27middle%27 fill=%27%236b7280%27%3EИзображение не найдено%3C/text%3E%3C/svg%3E'">
+    </div>
+    <div class="scheme-item">
+      <h3>🔌 Розеточная сеть (${room.socketGroup})</h3>
+      <img src="${room.schemes.sockets}" alt="Схема розеток" class="scheme-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 300%27%3E%3Crect fill=%27%23f8fafc%27 width=%27400%27 height=%27300%27/%3E%3Ctext x=%27200%27 y=%27150%27 text-anchor=%27middle%27 fill=%27%236b7280%27%3EИзображение не найдено%3C/text%3E%3C/svg%3E'">
+    </div>
+  `;
+  
+  document.getElementById('schemeModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+// Close modal
+function closeModal() {
+  document.getElementById('schemeModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Event listeners
+document.getElementById('schemeModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+
+// Initialize
+document.addEventListener('DOMContentLoaded', renderRooms);
+</script>
+</body>
+</html>
