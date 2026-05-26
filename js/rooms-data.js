@@ -115,7 +115,7 @@ const roomsData = [
       sockets: "images/pom4-sockets.png"
     }
   },
-  {
+   {
     id: 5,
     name: "Пом. 5",
     type: "Класс",
@@ -129,9 +129,24 @@ const roomsData = [
     lightCable: "ВВГнг(А)-LSLTx 3×1,5",
     lightPower: "1,02 кВт (совм. с 6)",
     lightLength: "135 м",
-    lightFixtures: "BEST OFFICE CLASS 30 IP40",
-    equipment: "Розетки 2-местные IP20 (~4 шт.), выключатель 1-кл. скрытый, светильники IP40 (~5 шт.)",
-    hasSchemes: false
+    lightFixtures: "BEST OFFICE CLASS 30 IP40 (15 шт.)",
+    equipment: [
+      "Розетка встроенная 2-местная с/з 16А (IP20) EKF Валенсия EWR16-128-10 (4 шт.)",
+      "Розетка накладная 1-местная с/з 16А (IP20) EKF Минск EGR16-028-10 (1 шт.)",
+      "Светильник светодиодный, 1х30Вт, IP40 BEST OFFICE CLASS 30 (15 шт.)",
+      "Светильник светодиодный, 1х30Вт, IP40, для освещения досок BEST ССП PL-03 CLASS 30 (2 шт.)",
+      "Выключатель одноклавишный для скрытой установки, IP20, 10А EKF Валенсия EWV10-021-10 (2 шт.)",
+      "Выключатель двухклавишный для скрытой установки, IP20, 10А EKF Валенсия EWV10-023-10 (1 шт.)",
+      "Кабель канал (3 м)",
+      "Распред коробка (22 шт.)",
+      "Штроба (24 м)",
+      "Проходные отверстия с гильзами диаметр до 25 мм (2 шт.)"
+    ],
+    hasSchemes: true,
+    schemes: {
+      lighting: "images/pom5-lighting.png",
+      sockets: "images/pom5-sockets.png"
+    }
   },
   {
     id: 6,
