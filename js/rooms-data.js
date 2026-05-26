@@ -326,18 +326,28 @@ const roomsData = [
       sockets: "images/pom11-sockets.png"
     }
   },
-  {
+   {
     id: 12,
     name: "Пом. 12",
     type: "Лест. клетка",
     area: 16.7,
-    lightGroup: "Гр.О3-11",
-    lightCable: "ВВГнг(А)-LSLTx 3×1,5",
-    lightFixtures: "BEST ЖКХ-С 10 IP65 (накладные, 1×10Вт) (2 шт.)",
+    lightGroup: "Гр.АО1-1-5",
+    lightPower: "0,17 кВт",
+    lightCable: "ВВГнг(А)-FRLSLTx 4×1,5",
+    lightFixtures: "BEST OFFICE LONG MINI 26 (со встроенным БАП) (2 шт.)",
     lightProtection: "ВА47-63 С10",
-    equipment: "Выключатель открытый IP44, 10А. Прокладка в кабель-канале/штробе.",
-    hasSchemes: false,
-    borderColor: "var(--lit)"
+    equipment: [
+      "Светильник светодиодный, 1х26Вт, IP40, со встроенным БАП BEST OFFICE LONG MINI 26 (2 шт.)",
+      "Распред коробка (1 шт.)",
+      "Штроба (8 м)",
+      "Проходные отверстия с гильзами диаметр до 25 мм (1 шт.)"
+    ],
+    hasSchemes: true,
+    schemes: {
+      lighting: "images/pom12-lighting.png"
+    },
+    borderColor: "var(--emr)",
+    note: "⚠️ Аварийное освещение. Кабель огнестойкий."
   },
   {
     id: 13,
