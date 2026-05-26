@@ -363,9 +363,20 @@ const roomsData = [
     lightCable: "ВВГнг(А)-LSLTx 3×1,5",
     lightPower: "0,84 кВт (совм. с 14,15)",
     lightLength: "86 м",
-    lightFixtures: "BEST OFFICE CLASS 30 IP40",
-    equipment: "Розетки 2-местные IP20 (~2 шт.), выключатель 1-кл. скрытый, светильники IP40 (~2 шт.)",
-    hasSchemes: false
+    lightFixtures: "BEST OFFICE CLASS 30 IP40 (4 шт.)",
+    equipment: [
+      "Светильник светодиодный, 1х30Вт, IP40 BEST OFFICE CLASS 30 (4 шт.)",
+      "Выключатель одноклавишный для скрытой установки, IP20, 10А EKF Валенсия EWV10-021-10 (1 шт.)",
+      "Розетка встроенная 2-местная с/з 16А (IP20) EKF Валенсия EWR16-128-10 (2 шт.)",
+      "Распред коробка (6 шт.)",
+      "Штроба (12 м)",
+      "Проходные отверстия с гильзами диаметр до 25 мм (2 шт.)"
+    ],
+    hasSchemes: true,
+    schemes: {
+      lighting: "images/pom13-lighting.png",
+      sockets: "images/pom13-sockets.png"
+    }
   },
   {
     id: 14,
