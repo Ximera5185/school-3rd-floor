@@ -580,23 +580,33 @@ const roomsData = [
   },
   {
     id: 21,
-    name: "Пом. 21",
-    type: "Коридор",
-    area: 197.8,
-    lightGroup: "Гр.О3-9",
+    name: "Пом. 21,25 (Коридоры)",
+    type: "Коридор / Эвакуационный путь",
+    area: 394.3,
+    lightGroup: "Гр.О3-9, Гр.О3-10",
     lightCable: "ВВГнг(А)-LSLTx 3×1,5",
-    lightPower: "0,51 кВт",
-    lightLength: "70 м",
-    lightFixtures: "BEST OFFICE CLASS 30 IP40 (~8 шт.)",
+    lightPower: "1,02 кВт (совм.)",
+    lightLength: "162 м",
+    lightFixtures: "BEST OFFICE CLASS 30 IP40 (34 шт.)",
     lightProtection: "ВА47-63 С10",
-    emergencyLightGroup: "Гр.АО3-1",
+    emergencyLightGroup: "Гр.АО3-1, Гр.АО3-2",
     emergencyLightCable: "ВВГнг(А)-FRLSLTx 4×1,5",
-    emergencyLightLength: "75 м",
+    emergencyLightLength: "155 м",
     emergencyLightProtection: "ВА47-63 С10",
-    emergencyNote: "Светильники со встроенным БАП (3 шт.)",
-    equipment: "Выключатели 1-кл. скрытые. Расстояние рабочего/аварийного кабеля ≥20 мм.",
-    note: "🔋 Между БАП и лампами запрещена установка коммутационных аппаратов.",
-    hasSchemes: false,
+    emergencyNote: "Светильники со встроенным БАП (16 шт.)",
+    equipment: [
+      "Светильник светодиодный, 1х30Вт, IP40 BEST OFFICE CLASS 30 (34 шт.)",
+      "Светильник светодиодный, 1х30Вт, IP40, со встроенным БАП BEST OFFICE CLASS 30 (16 шт.)",
+      "Выключатель одноклавишный для скрытой установки, IP20, 10А EKF Валенсия EWV10-021-10 (4 шт., 2 для аварийного света)",
+      "Штроба (8 м)",
+      "Распред коробка (54 шт.)"
+    ],
+    note: "🔋 Между БАП и лампами запрещена установка коммутационных аппаратов. Расстояние рабочего/аварийного кабеля ≥20 мм.",
+    hasSchemes: true,
+    schemes: {
+      lighting: "images/pom21-lighting.png",
+      sockets: "images/pom21-sockets.png"
+    },
     borderColor: "var(--emr)"
   },
   {
@@ -609,62 +619,79 @@ const roomsData = [
     socketPower: "1,0 кВт",
     socketLength: "33 м",
     socketProtection: "АД32 С16, 30мА",
-    lightGroup: "Гр.О3-8",
+    lightGroup: "Гр.О2-2-8",
     lightCable: "ВВГнг(А)-LSLTx 3×1,5",
     lightPower: "0,60 кВт (совм. с 23,24)",
     lightLength: "65 м",
-    lightFixtures: "BEST OFFICE CLASS 30 IP40",
-    equipment: "Розетки 2-местные IP20 (~2 шт.), выключатель 1-кл. скрытый, светильники IP40 (~2 шт.)",
-    hasSchemes: false
+    lightFixtures: "BEST OFFICE CLASS 30 IP40 (6 шт.)",
+    equipment: [
+      "Розетка встроенная 2-местная с/з 16А (IP20) EKF Валенсия EWR16-128-10 (5 шт.)",
+      "Светильник светодиодный, 1х30Вт, IP40 BEST OFFICE CLASS 30 (6 шт.)",
+      "Выключатель двухклавишный для скрытой установки, IP20, 10А EKF Валенсия EWV10-023-10 (1 шт.)",
+      "Штроба (26 м)",
+      "Распред коробка (8 шт.)",
+      "Проходные отверстия с гильзами диаметр до 25 мм (2 шт.)"
+    ],
+    hasSchemes: true,
+    schemes: {
+      lighting: "images/pom22-lighting.png",
+      sockets: "images/pom22-sockets.png"
+    }
   },
   {
     id: 23,
     name: "Пом. 23",
     type: "Класс",
     area: 25.4,
-    socketGroup: "Гр.Р3-14",
+    socketGroup: "Гр.Р3-15",
     socketCable: "ВВГнг(А)-LSLTx 3×2,5",
     socketPower: "1,0 кВт",
     socketLength: "43 м",
     socketProtection: "АД32 С16, 30мА",
-    lightGroup: "Гр.О3-8",
-    lightFixtures: "BEST OFFICE CLASS 30 IP40 (~2 шт.)",
-    equipment: "Розетки 2-местные IP20 (~2 шт.), выключатель 1-кл. скрытый",
-    hasSchemes: false
+    lightGroup: "Гр.О2-2-8",
+    lightFixtures: "BEST OFFICE CLASS 30 IP40 (6 шт.) + BEST ССП PL-03 (1 шт.)",
+    equipment: [
+      "Розетка встроенная 2-местная с/з 16А (IP20) EKF Валенсия EWR16-128-10 (4 шт.)",
+      "Светильник светодиодный, 1х30Вт, IP40 BEST OFFICE CLASS 30 (6 шт.)",
+      "Светильник светодиодный, 1х30Вт, IP40, для освещения досок BEST ССП PL-03 CLASS 30 (1 шт.)",
+      "Выключатель двухклавишный для скрытой установки, IP20, 10А EKF Валенсия EWV10-023-10 (1 шт.)",
+      "Штроба (20 м)",
+      "Распред коробка (10 шт.)",
+      "Проходные отверстия с гильзами диаметр до 25 мм (2 шт.)"
+    ],
+    hasSchemes: true,
+    schemes: {
+      lighting: "images/pom23-lighting.png",
+      sockets: "images/pom23-sockets.png"
+    }
   },
-  {
+   {
     id: 24,
     name: "Пом. 24",
     type: "Класс",
     area: 24.3,
-    socketGroup: "Гр.Р3-15",
+    socketGroup: "Гр.Р3-16",
     socketCable: "ВВГнг(А)-LSLTx 3×2,5",
     socketPower: "1,0 кВт",
     socketLength: "45 м",
     socketProtection: "АД32 С16, 30мА",
-    lightGroup: "Гр.О3-8",
-    lightFixtures: "BEST OFFICE CLASS 30 IP40 (~2 шт.)",
-    equipment: "Розетки 2-местные IP20 (~2 шт.), выключатель 1-кл. скрытый",
-    hasSchemes: false
-  },
-  {
-    id: 25,
-    name: "Пом. 25",
-    type: "Коридор",
-    area: 196.5,
-    lightGroup: "Гр.О3-10",
-    lightCable: "ВВГнг(А)-LSLTx 3×1,5",
-    lightPower: "0,51 кВт",
-    lightLength: "92 м",
-    lightFixtures: "BEST OFFICE CLASS 30 IP40 (~8 шт.)",
-    emergencyLightGroup: "Гр.АО3-2",
-    emergencyLightCable: "ВВГнг(А)-FRLSLTx 4×1,5",
-    emergencyLightLength: "80 м",
-    emergencyLightProtection: "ВА47-63 С10",
-    emergencyNote: "Светильники со встроенным БАП (3 шт.)",
-    equipment: "Выключатели скрытые. Эвакуационный путь. Огнестойкий кабель.",
-    hasSchemes: false,
-    borderColor: "var(--emr)"
+    lightGroup: "Гр.О2-2-8",
+    lightFixtures: "BEST OFFICE CLASS 30 IP40 (6 шт.) + BEST ССП PL-03 (1 шт.)",
+    equipment: [
+      "Розетка встроенная 2-местная с/з 16А (IP20) EKF Валенсия EWR16-128-10 (4 шт.)",
+      "Светильник светодиодный, 1х30Вт, IP40 BEST OFFICE CLASS 30 (6 шт.)",
+      "Светильник светодиодный, 1х30Вт, IP40, для освещения досок BEST ССП PL-03 CLASS 30 (1 шт.)",
+      "Выключатель двухклавишный для скрытой установки, IP20, 10А EKF Валенсия EWV10-023-10 (1 шт.)",
+      "Выключатель одноклавишный для скрытой установки, IP20, 10А EKF Валенсия EWV10-021-10 (1 шт.)",
+      "Штроба (20 м)",
+      "Распред коробка (10 шт.)",
+      "Проходные отверстия с гильзами диаметр до 25 мм (2 шт.)"
+    ],
+    hasSchemes: true,
+    schemes: {
+      lighting: "images/pom24-lighting.png",
+      sockets: "images/pom24-sockets.png"
+    }  // ← Добавлена закрывающая скобка
   },
    {
     id: 26,
@@ -696,92 +723,6 @@ const roomsData = [
       sockets: "images/pom26-sockets.png"
     },
     borderColor: "var(--tech)"
-  },
-  {
-    id: 36,
-    name: "Пом. 36",
-    type: "Сан. узел",
-    area: 6.8,
-    lightGroup: "Гр.О3-11",
-    lightFixtures: "BEST ЖКХ-С 10 IP65 (1 шт.)",
-    hasSchemes: false,
-    borderColor: "var(--tech)"
-  },
-  {
-    id: 37,
-    name: "Пом. 37",
-    type: "Сан. узел",
-    area: 1.7,
-    lightGroup: "Гр.О3-11",
-    lightFixtures: "BEST ЖКХ-С 10 IP65 (1 шт.)",
-    hasSchemes: false,
-    borderColor: "var(--tech)"
-  },
-  {
-    id: 38,
-    name: "Пом. 38",
-    type: "Площадка",
-    area: 364.0,
-    lightGroup: "Гр.О3-11 / резерв ЩО3",
-    lightFixtures: "BEST OFFICE CLASS 30 IP40 + ЖКХ-С 10 IP65 (~15 шт.)",
-    equipment: "Розетки накладные IP20 для уборочной техники (2 шт., h=0,3-1,0м). Эвакуационные указатели.",
-    hasSchemes: false
-  },
-  {
-    id: 39,
-    name: "Пом. 39",
-    type: "Лест. клетка",
-    area: 17.9,
-    lightGroup: "Гр.О3-11 (совм.)",
-    lightFixtures: "BEST ЖКХ-С 10 IP65 (2 шт.)",
-    equipment: "Выключатель открытый IP44. Эвакуационный путь.",
-    hasSchemes: false,
-    borderColor: "var(--lit)"
-  },
-  {
-    id: 40,
-    name: "Пом. 40",
-    type: "Актовый зал",
-    area: 169.0,
-    lightPower: "Через резерв/смежные щиты (уточняется по актуализации)",
-    lightFixtures: "BEST OFFICE CLASS 30 IP40 (~10 шт.)",
-    note: "📐 Точная разводка уточняется на месте. Нормы освещённости 200-300 лк.",
-    hasSchemes: false
-  },
-  {
-    id: 41,
-    name: "Пом. 41",
-    type: "Склад",
-    area: 3.6,
-    socketGroup: "Гр.Р2-4-5 (с 2 этажа)",
-    socketCable: "ВВГнг(А)-LSLTx 3×2,5",
-    socketPower: "0,5 кВт",
-    socketLength: "28 м",
-    lightGroup: "Гр.О2-2-8",
-    lightCable: "ВВГнг(А)-LSLTx 3×1,5",
-    lightFixtures: "BEST ЖКХ-С 10 IP65 (1 шт.)",
-    equipment: "Розетка накладная IP20 (h=0,3-1,0м). Выключатель скрытый.",
-    hasSchemes: false,
-    borderColor: "var(--tech)"
-  },
-  {
-    id: 42,
-    name: "Пом. 42",
-    type: "Коридор",
-    area: 4.8,
-    lightGroup: "Гр.О3-11 (совм.)",
-    lightFixtures: "BEST ЖКХ-С 10 IP65 (1 шт.)",
-    hasSchemes: false
-  },
-  {
-    id: 43,
-    name: "Пом. 43",
-    type: "Аппаратная",
-    area: 18.3,
-    socketType: "Встроенные IP20, 16А (h=0,3-1,0м) (2-3 шт.)",
-    lightFixtures: "BEST ЖКХ-С 10 IP65 (2 шт.)",
-    note: "⚠️ Монтаж светильников строго ПОСЛЕ установки венткоробов и труб. Прокладка открыто в ПВХ-трубах.",
-    hasSchemes: false,
-    borderColor: "var(--tech)"
   }
+
 ];
